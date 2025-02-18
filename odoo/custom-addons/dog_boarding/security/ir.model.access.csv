@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dog_dog_user,dog.dog.user,model_dog_dog,base.group_user,1,1,1,1
+access_dog_vaccination_user,dog.vaccination.user,model_dog_vaccination,base.group_user,1,1,1,1
+access_dog_walk_user,dog.walk.user,model_dog_walk,base.group_user,1,1,1,1
+access_dog_booking_user,dog.booking.user,model_dog_booking,base.group_user,1,1,1,1
+access_dog_kennel_user,dog.kennel.user,model_dog_kennel,base.group_user,1,1,1,1

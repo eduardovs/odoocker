@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Dog Walk Tree View -->
+    <record id="view_dog_walk_tree" model="ir.ui.view">
+        <field name="name">dog.walk.tree</field>
+        <field name="model">dog.walk</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="dog_id"/>
+                <field name="walker_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Dog Walk Form View -->
+    <record id="view_dog_walk_form" model="ir.ui.view">
+        <field name="name">dog.walk.form</field>
+        <field name="model">dog.walk</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="dog_id"/>
+                            <field name="walker_id"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="image_ids" widget="many2many_binary"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Dog Walk Action Window -->
+    <record id="action_dog_walk" model="ir.actions.act_window">
+        <field name="name">Dog Walks</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dog.walk</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

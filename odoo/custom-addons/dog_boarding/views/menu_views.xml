@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top menu item -->
+    <menuitem id="menu_dog_boarding_root"
+        name="Dog Boarding"
+        sequence="10"/>
+
+    <!-- Dogs Menu -->
+    <menuitem id="menu_dog_boarding_dogs"
+        name="Dogs"
+        parent="menu_dog_boarding_root"
+        action="action_dog"
+        sequence="10"/>
+
+    <!-- Dog Walks Menu -->
+    <menuitem id="menu_dog_boarding_walks"
+        name="Dog Walks"
+        parent="menu_dog_boarding_root"
+        action="action_dog_walk"
+        sequence="20"/>
+
+    <!-- Bookings Menu -->
+    <menuitem id="menu_dog_boarding_bookings"
+        name="Bookings"
+        parent="menu_dog_boarding_root"
+        action="action_booking"
+        sequence="30"/>
+
+    <!-- Configuration Menu -->
+    <menuitem id="menu_dog_boarding_config"
+        name="Configuration"
+        parent="menu_dog_boarding_root"
+        sequence="100"/>
+
+    <!-- Kennels Menu -->
+    <menuitem id="menu_dog_boarding_kennels"
+        name="Kennels"
+        parent="menu_dog_boarding_config"
+        action="action_kennel"
+        sequence="10"/>
+</odoo>

@@ -8,7 +8,7 @@ construct_clone_command() {
     local repo_url=$2
     case $repo_type in
         private) echo "git clone https://${GITHUB_USER}:${GITHUB_ACCESS_TOKEN}@${repo_url#https://}" ;;
-        enterprise) echo "git clone https://${ENTERPRISE_USER}:${ENTERPRISE_ACCESS_TOKEN}@${repo_url#https://} ${ENTERPRISE_ADDONS}" ;;
+        # enterprise) echo "git clone https://${ENTERPRISE_USER}:${ENTERPRISE_ACCESS_TOKEN}@${repo_url#https://} ${ENTERPRISE_ADDONS}" ;;
         public) echo "git clone $repo_url" ;;
     esac
 }
@@ -26,7 +26,9 @@ clone_and_copy_modules() {
     # Clone and copy logic for enterprise repository
     if [[ $repo_type == "enterprise" ]]; then
         if [ -n "$GITHUB_USER" ] && [ -n "$GITHUB_ACCESS_TOKEN" ]; then
-            $clone_cmd --depth 1 --branch ${ODOO_TAG} --single-branch --no-tags
+            # $clone_cmd --depth 1 --branch ${ODOO_TAG} --single-branch --no-tags
+            echo "enterprise"
+
         fi
     else
         # Determine if any module has a true condition

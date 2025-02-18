@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Booking Tree View -->
+    <record id="view_booking_tree" model="ir.ui.view">
+        <field name="name">dog.booking.tree</field>
+        <field name="model">dog.booking</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state == 'draft'" decoration-success="state == 'confirmed'" decoration-warning="state == 'in_progress'" decoration-muted="state in ('completed','cancelled')">
+                <field name="dog_id"/>
+                <field name="owner_id"/>
+                <field name="dropoff_datetime"/>
+                <field name="pickup_datetime"/>
+                <field name="kennel_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Booking Form View -->
+    <record id="view_booking_form" model="ir.ui.view">
+        <field name="name">dog.booking.form</field>
+        <field name="model">dog.booking</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,in_progress,completed"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="dog_id"/>
+                            <field name="owner_id"/>
+                        </group>
+                        <group>
+                            <field name="dropoff_datetime"/>
+                            <field name="pickup_datetime"/>
+                            <field name="kennel_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Booking Search View -->
+    <record id="view_booking_search" model="ir.ui.view">
+        <field name="name">dog.booking.search</field>
+        <field name="model">dog.booking</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="dog_id"/>
+                <field name="owner_id"/>
+                <field name="kennel_id"/>
+                <filter string="Draft" name="draft" domain="[('state','=','draft')]"/>
+                <filter string="Confirmed" name="confirmed" domain="[('state','=','confirmed')]"/>
+                <filter string="In Progress" name="in_progress" domain="[('state','=','in_progress')]"/>
+                <filter string="Completed" name="completed" domain="[('state','=','completed')]"/>
+                <filter string="Cancelled" name="cancelled" domain="[('state','=','cancelled')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Status" name="status" context="{'group_by':'state'}"/>
+                    <filter string="Owner" name="owner" context="{'group_by':'owner_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Booking Action Window -->
+    <record id="action_booking" model="ir.actions.act_window">
+        <field name="name">Bookings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dog.booking</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

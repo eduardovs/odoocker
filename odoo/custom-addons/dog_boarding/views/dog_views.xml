@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Dog Tree View -->
+    <record id="view_dog_tree" model="ir.ui.view">
+        <field name="name">dog.dog.tree</field>
+        <field name="model">dog.dog</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="owner_id"/>
+                <field name="breed"/>
+                <field name="age"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Dog Form View -->
+    <record id="view_dog_form" model="ir.ui.view">
+        <field name="name">dog.dog.form</field>
+        <field name="model">dog.dog</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="owner_id"/>
+                            <field name="breed"/>
+                            <field name="age"/>
+                        </group>
+                        <group>
+                            <field name="notes"/>
+                            <field name="image_ids" widget="many2many_binary"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Vaccinations">
+                            <field name="vaccination_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="expiration_date"/>
+                                    <field name="document" widget="binary" filename="name"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Dog Search View -->
+    <record id="view_dog_search" model="ir.ui.view">
+        <field name="name">dog.dog.search</field>
+        <field name="model">dog.dog</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="owner_id"/>
+                <field name="breed"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Dog Action Window -->
+    <record id="action_dog" model="ir.actions.act_window">
+        <field name="name">Dogs</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dog.dog</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Register your first dog!
+            </p>
+        </field>
+    </record>
+</odoo>
